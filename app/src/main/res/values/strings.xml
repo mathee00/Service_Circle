@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Service Circle</string>
+    <string name="profilepicture">ProfilePicture</string>
+    <string name="detail_description2">TextView</string>
+    <string name="detail_title1">TextView</string>
+    <string-array name="programming_languages">
+        <item>James Bond</item>
+        <item>Bob Builder</item>
+        <item>Anna Karen</item>
+        <item>Daniel </item>
+        <item>Jane Kotlin</item>
+        <item>Peter Nile</item>
+        <item>Ruby Walles</item>
+        <item>Swan Smith</item>
+        <item>Type Li</item>
+        <item>Villa Long</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>Experience Plumber</item>
+        <item>Highly skilled Mechanic</item>
+        <item>Professional Capentor</item>
+        <item>Professional Butician </item>
+        <item>Highly skilled Mechanic </item>
+        <item>Professional Butician</item>
+        <item>Highly skilled Mechanic</item>
+        <item>Highly skilled Mechanic </item>
+        <item>Highly skilled Mechanic</item>
+        <item>Highly skilled Mechanic </item>
+    </string-array>
+</resources>
