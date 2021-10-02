@@ -12,7 +12,10 @@ import androidx.annotation.Nullable;
 //Created by S.M.Suriyaarachchi
 //IT20187514
 
+//This java class represents the SQLite database scheme
 public class MyDatabaseHelper extends SQLiteOpenHelper{
+
+    //Declaring variables
     private Context context;
     private static final String DATABASE_NAME="ServiceCircle.db";
     private static final int DATABASE_VERSION=1;
@@ -24,23 +27,29 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     private static final String COLUMN_SKILL="worker_skill";
     private static final String COLUMN_RATING="worker_rating";
 
-
+    //Constructor for the MyDatabaseHelper class
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
 
+    //Implementing the onCreate method
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        //SQL statement for creating table
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT, " +
                 COLUMN_SKILL + " TEXT, " +
                 COLUMN_RATING + " TEXT); ";
+
+        //executing the SQL query
         db.execSQL(query);
     }
 
+    //Implementing the onUpgrade method
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
