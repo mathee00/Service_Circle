@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 //This java class represents the SQLite database scheme
 public class MyDatabaseHelper extends SQLiteOpenHelper{
 
-    //Declaring variables
+    //Declaring database configurations
     private Context context;
     private static final String DATABASE_NAME="ServiceCircle.db";
     private static final int DATABASE_VERSION=1;
@@ -34,10 +34,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     }
 
     //Implementing the onCreate method
+    //This onCreate method creates the database table and other components
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        //SQL statement for creating table
+        //SQL statement for creating table (I created only one table)
         String query = "CREATE TABLE " + TABLE_NAME +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
@@ -50,12 +51,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     }
 
     //Implementing the onUpgrade method
+    //This onUpgrade method is called when the database needs to be upgraded
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
+    //This method adds worker info to the worker table
     void addWorker(String name, String description, String skill, String rating) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -63,6 +66,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         cv.put(COLUMN_DESCRIPTION, description);
         cv.put(COLUMN_SKILL, skill);
         cv.put(COLUMN_RATING, rating);
+
+        //Inserting data to the worker table
         long result = db.insert(TABLE_NAME,null,cv);
         if (result == -1){
             Toast.makeText(context,"Oops! something went wrong on DB insert ", Toast.LENGTH_SHORT).show();
@@ -71,8 +76,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
+    //Read all the data in worker table and to show the results in our results list
     Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
+        //Only created the readable instance because I only needed to query the data
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -82,6 +89,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         return cursor;
     }
 
+    //This method gets a single worker data by passing the specified workerID
     Cursor readWorkerData(int workerID){
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = " + workerID +" ; ";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -92,7 +100,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         }
         return cursor;
     }
-
+    //This method updates the worker table with the worker info (name, skill etc.) for a given workerID
     void updateWorker(String workerID, String name, String description, String skill, String rating) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -108,6 +116,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         }
     }
 
+    //This method deletes the worker table of a given workerID
     void deleteWorker(String workerID){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, " _id=? ", new String[]{workerID});
