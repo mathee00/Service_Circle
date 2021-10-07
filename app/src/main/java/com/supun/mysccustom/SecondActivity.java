@@ -53,7 +53,6 @@ public class SecondActivity extends AppCompatActivity {
                 intent.putExtra("description",String.valueOf(description.getText()));
                 intent.putExtra("skill",String.valueOf(skill.getText()));
                 intent.putExtra("rating",String.valueOf(rating.getText()));
-                //intent.putExtra("myImage",mainImageView);
                 startActivity(intent);
             }
         });

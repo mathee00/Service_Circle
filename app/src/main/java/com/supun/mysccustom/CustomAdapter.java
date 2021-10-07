@@ -17,6 +17,7 @@ import java.util.ArrayList;
 //Created by S.M.Suriyaarachchi
 //IT20187514
 
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
@@ -26,6 +27,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     int images[];
     int position;
 
+    //The Adapters' constructor
     CustomAdapter(Context context, ArrayList worker_id,
                   ArrayList worker_name,
                   ArrayList worker_description,
@@ -42,12 +44,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         String[] tempData1 = new String[worker_name.size()];
         worker_name.toArray(tempData1);
-        this.data1 = tempData1;
         this.name_view_data = tempData1;
 
         String[] tempData2 = new String[worker_description.size()];
         worker_name.toArray(tempData2);
-        this.data2 = tempData2;
         this.description_view_data = tempData2;
 
         String[] tempData3 = new String[worker_skill.size()];
@@ -62,6 +62,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @NonNull
     @Override
+    //This method creates and initializes the view holder
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.my_row, parent, false);
@@ -69,26 +70,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
+    //This method binds the data to the view holder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.worker_name_txt.setText(String.valueOf(worker_name.get(position)));
         holder.worker_description_txt.setText(String.valueOf(worker_description.get(position)));
         holder.worker_skill_txt.setText(String.valueOf(worker_skill.get(position)));
         holder.worker_rating_txt.setText(String.valueOf(worker_rating.get(position)));
         holder.worker_id_txt.setText(String.valueOf((worker_id.get(position))));
-        //holder.myImage.setImageResource(images[position]);
         int imgLocation = position%2 ;
         holder.myImage.setImageResource(images[imgLocation]);
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
+            //this method captures the onClick event
             public void onClick(View view) {
                 Intent intenet = new Intent(context,SecondActivity.class);
-                /*intenet.putExtra("data1",data1[position]);
-                intenet.putExtra("data2",data2[position]);
-                intenet.putExtra("skill_view_data",skill_view_data[position]);
-                intenet.putExtra("rating_view_data",rating_view_data[position]);*/
-                //intenet.putExtra("myImage",images[imgLocation]);
-
                 intenet.putExtra("id",String.valueOf((worker_id.get(position))));
                 intenet.putExtra("name",String.valueOf((worker_name.get(position))));
                 intenet.putExtra("description",String.valueOf((worker_description.get(position))));
@@ -96,13 +92,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intenet.putExtra("rating",String.valueOf((worker_rating.get(position))));
                 intenet.putExtra("myImage",images[imgLocation]);
 
-
                 context.startActivity(intenet);
             }
         });
     }
 
     @Override
+    //This method counts the individual elements in the recycle view
     public int getItemCount() {
         return worker_id.size();
     }
@@ -113,6 +109,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         ImageView myImage;
         ConstraintLayout mainLayout;
 
+        //This is the holder class (Sub class of the adapter class)
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             worker_name_txt = itemView.findViewById(R.id.worker_name_txt);

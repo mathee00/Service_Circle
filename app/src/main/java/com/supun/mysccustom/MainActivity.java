@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Getting the data from the database and filling the string arrays for workers' info
     void storeDataInArrays(){
         Cursor cursor = myDB.readAllData();
         if(cursor.getCount() == 0 ) {

@@ -29,6 +29,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View view) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
 
+                //Add Worker, validation
                 if((name_input.getText().length() ==0)  ||
                         (description_input.getText().length() ==0)  ||
                         (skill_input.getText().length() ==0)  ||
