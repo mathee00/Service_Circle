@@ -77,6 +77,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
     }
 
     //Read all the data in worker table and to show the results in our results list
+    //Read all the data in worker table and to show the results in the recycle view
     Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
         //Only created the readable instance because I only needed to query the data
@@ -100,6 +101,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
         }
         return cursor;
     }
+
+
     //This method updates the worker table with the worker info (name, skill etc.) for a given workerID
     void updateWorker(String workerID, String name, String description, String skill, String rating) {
         SQLiteDatabase db = this.getWritableDatabase();

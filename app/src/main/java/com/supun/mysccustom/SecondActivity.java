@@ -44,6 +44,8 @@ public class SecondActivity extends AppCompatActivity {
         getData();
         setData();
         edit_button = findViewById(R.id.edit_button);
+
+        //Creating an onClickListener for the edit button
         edit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +60,8 @@ public class SecondActivity extends AppCompatActivity {
         });
 
         delete_button = findViewById(R.id.delete_button);
+
+        //Creating an onClickListener for the delete button
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,6 +95,7 @@ public class SecondActivity extends AppCompatActivity {
         mainImageView.setImageResource(myImage);
     }
 
+    //This the method pops up the alert dialog box for deleting a worker
     void confirmDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Delete " + name_view_data + " ?");
@@ -102,7 +107,7 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
-        alertDialogBuilder.setNegativeButton("Mo", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
