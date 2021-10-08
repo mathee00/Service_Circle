@@ -51,6 +51,7 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
+    //Getting data from user and setting those data in the interface
     void getAndSetIntentData() {
             id_edit_data = getIntent().getStringExtra("id");
             name_edit_data = getIntent().getStringExtra("name");
@@ -66,23 +67,4 @@ public class EditActivity extends AppCompatActivity {
             rating_input.setText(rating_edit_data);
     }
 
-    void confirmDialog() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Delete" + name_edit_data + " ?");
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(EditActivity.this);
-                myDB.deleteWorker(worker_id);
-                finish();
-            }
-        });
-        alertDialogBuilder.setNegativeButton("Mo", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        alertDialogBuilder.create().show();
-    }
 }
