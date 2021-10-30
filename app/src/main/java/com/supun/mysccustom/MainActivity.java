@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview);
         add_button = findViewById(R.id.add_button);
         add_button.setOnClickListener(new View.OnClickListener() {
+
+            //The floating add button
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);

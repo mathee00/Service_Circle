@@ -110,7 +110,11 @@ public class SecondActivity extends AppCompatActivity {
         alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                //keeps the screen in the same SecondActivity when this is kept empty.
 
+
+//                Intent intent = new Intent(SecondActivity.this, EditActivity.class);
+//                startActivity(intent);
             }
         });
         alertDialogBuilder.create().show();

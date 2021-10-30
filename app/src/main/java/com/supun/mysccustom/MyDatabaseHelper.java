@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -73,6 +76,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper{
             Toast.makeText(context,"Oops! something went wrong on DB insert ", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context,"Worker added Successfully!!", Toast.LENGTH_SHORT).show();
+
+
+//            Toast toast = Toast.makeText(context, "Yay!", Toast.LENGTH_SHORT);
+//
+//            TextView toastMessage = (TextView) toast.getView().findViewById(android.R.id.message);
+//            toastMessage.setTextColor(Color.RED);
+//            toastMessage.setTextSize(32);
+//            toast.show();
         }
     }
 
